@@ -28,10 +28,17 @@ import NoData from "@/components/NoData.vue"
 import FolderSelect from "@/components/FolderSelect.vue";
 import Navigation from "@/components/Navigation.vue"
 import Preview from "@/components/preview/Preview.vue"
+import Window from "@/components/Window.vue"
+
+//引入代码高亮
+import HljsVuePlugin from '@highlightjs/vue-plugin'
+import "highlight.js/styles/atom-one-light.css";
+import 'highlight.js/lib/common'
 
 const app = createApp(App)
 app.use(ElementPlus)
 app.use(router)
+app.use(HljsVuePlugin)
 
 app.component('Dialog', Dialog)
 app.component('Avatar', Avatar)
@@ -41,6 +48,7 @@ app.component('NoData', NoData)
 app.component('FolderSelect', FolderSelect)
 app.component('Navigation', Navigation)
 app.component('Preview', Preview)
+app.component('Window', Window)
 
 
 app.config.globalProperties.Verify = Verify;

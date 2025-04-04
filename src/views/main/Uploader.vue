@@ -67,6 +67,7 @@
                 title="上传"
                 @click="startUpload(item.uid)"
               ></Icon>
+              <!--TODO暂停和续传功能-->
               <Icon
                 :width="28"
                 class="btn-item"

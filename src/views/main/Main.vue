@@ -201,6 +201,8 @@
     ></FolderSelect>
     <!--预览-->
     <Preview ref="previewRef"> </Preview>
+    <!--分享-->
+    <ShareFile ref="shareFileRef"> </ShareFile>
   </div>
 </template>
 
@@ -214,6 +216,8 @@ import {
   computed,
 } from "vue";
 import CategoryInfo from "@/js/CategoryInfo.js";
+import ShareFile from "./ShareFile.vue";
+
 import { useRouter, useRoute } from "vue-router";
 const router = useRouter();
 const route = useRoute();
@@ -579,6 +583,23 @@ const navChange = (data) => {
   showLoading.value = true;
   currentFolder.value = curFolder;
   loadDataList();
+};
+// 下载文件
+const download = async (row) => {
+  let result = await proxy.Request({
+    url: api.createDownloadUrl + "/" + row.fileId,
+  });
+
+  if (!result) {
+    return;
+  }
+
+  window.location.href = api.download + "/" + result.data;
+};
+//分享
+const shareFileRef = ref();
+const share = (row) => {
+  shareFileRef.value.show(row);
 };
 </script>
 
