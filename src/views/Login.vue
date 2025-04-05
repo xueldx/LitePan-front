@@ -278,6 +278,7 @@ const checkRePassword = (rule, value, callback) => {
 
 const checkCodeUrl = ref(api.checkCodeUrl);
 const checkCodeUrlSendMailCode = ref(api.checkCodeUrl);
+// type：0:注册 1:找回密码
 const changeCheckCode = (type) => {
   if (type == 0) {
     checkCodeUrl.value =
@@ -465,12 +466,14 @@ const getEmailCode = () => {
       return false;
     }
     let params = Object.assign({}, formDataSendMailCode.value);
-    if (opType.value == 1) {
+    //opType.value控制当前是在哪个页面 0:注册 1：登录 2：找回密码
+    //请求参数type 0:注册 1:找回密码
+    if (opType.value == 0) {
       params.type = 0;
     } else if (opType.value == 2) {
       params.type = 1;
     }
-
+    //  params.type = opType.value == 0 ? 0 : 1;
     let result = await proxy.Request({
       url: api.sendEmailCodeUrl,
       params: params,

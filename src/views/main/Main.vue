@@ -247,7 +247,7 @@ const fileAccept = computed(() => {
   return categoryItem ? categoryItem.accept : "*";
 });
 //列表头信息
-const columns = [
+const columns = ref([
   {
     label: "文件名",
     prop: "fileName",
@@ -264,7 +264,7 @@ const columns = [
     scopedSlots: "fileSize",
     width: 200,
   },
-];
+]);
 
 const tableData = ref({});
 // 表格选项
@@ -482,6 +482,10 @@ const rowSelected = (rows) => {
   rows.forEach((item) => {
     selectFileIdList.value.push(item.fileId);
   });
+  columns.value[0].label =
+    selectFileIdList.value.length == 0
+      ? "文件名"
+      : `已选中${selectFileIdList.value.length}个文件/文件夹`;
 };
 
 const delFile = (row) => {

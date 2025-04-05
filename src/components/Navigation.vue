@@ -103,6 +103,8 @@ const setPath = () => {
 };
 
 const getNavigationFolder = async (path) => {
+  console.log("test");
+
   let url = api.getFolderInfo;
   if (props.shareId) url = api.getFolderInfo4Share;
   if (props.adminShow) url = api.getFolderInfo4Admin;
@@ -131,8 +133,16 @@ watch(
   () => route,
   (newVal, oldVal) => {
     if (!props.watchPath) return;
-    //当不处于全部页，也不需要监听文件夹切换（详细分类里没有文件夹）
-    if (newVal.path.indexOf("/main") === -1) return;
+    if (
+      newVal.path.indexOf("/main") === -1 &&
+      newVal.path.indexOf("/settings/fileList") === -1 &&
+      newVal.path.indexOf("/share") === -1
+    ) {
+      //只要路径是这三个中的任何一个，必然有一个条件为false，
+      // 用&&连接，则整个判断结果就为false（不会中断函数执行）就会继续往后走
+      return;
+    }
+
     //否则取出查询参数和分类，请求后端接口
     const path = newVal.query.path;
     category.value = newVal.params.category;

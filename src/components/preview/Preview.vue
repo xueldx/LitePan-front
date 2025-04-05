@@ -116,9 +116,9 @@ const showPreview = (data, showPart) => {
       _createDownloadUrl = _createDownloadUrl + "/" + data.fileId;
     } else if (showPart == 1) {
       //todo Check uerId? userId
-      _url = _url + "/" + data.uerId + "/" + data.fileId;
+      _url = _url + "/" + data.userId + "/" + data.fileId;
       _createDownloadUrl =
-        _createDownloadUrl + "/" + data.uerId + "/" + data.fileId;
+        _createDownloadUrl + "/" + data.userId + "/" + data.fileId;
     } else if (showPart == 2) {
       _url = _url + "/" + data.shareId + "/" + data.fileId;
       _createDownloadUrl =
