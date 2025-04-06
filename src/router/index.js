@@ -94,6 +94,12 @@ const router = createRouter({
             component: () =>
                 import("@/views/webshare/Share.vue")
         },
+        // 添加404页面路由
+        {
+            path: '/:pathMatch(.*)*',
+            name: 'NotFound',
+            component: () => import('@/views/NotFound.vue')
+        }
     ]
 })
 
