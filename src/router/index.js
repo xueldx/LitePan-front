@@ -82,18 +82,18 @@ const router = createRouter({
             },
             ]
         },
-        // {
-        //     path: '/shareCheck/:shareId',
-        //     name: '分享校验',
-        //     component: () =>
-        //         import ("@/views/webshare/ShareCheck.vue")
-        // },
-        // {
-        //     path: '/share/:shareId',
-        //     name: '分享',
-        //     component: () =>
-        //         import ("@/views/webshare/Share.vue")
-        // },
+        {
+            path: '/shareCheck/:shareId',
+            name: '分享校验',
+            component: () =>
+                import("@/views/webshare/ShareCheck.vue")
+        },
+        {
+            path: '/share/:shareId',
+            name: '分享',
+            component: () =>
+                import("@/views/webshare/Share.vue")
+        },
     ]
 })
 

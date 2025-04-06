@@ -267,7 +267,6 @@ const menus = [
     ],
   },
   {
-    // path: "/settings",
     path: "/settings/fileList",
     icon: "settings",
     name: "设置",

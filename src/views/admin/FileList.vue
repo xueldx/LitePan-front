@@ -16,7 +16,14 @@
             </template>
           </el-input>
         </div>
-        <div class="iconfont icon-refresh" @click="loadDataList"></div>
+        <div
+          :class="['iconfont', 'icon-refresh', isRotating ? 'rotate' : '']"
+          @click="
+            loadDataList();
+            isRotating = true;
+          "
+          @animationend="isRotating = false"
+        ></div>
 
         <el-button
           :style="{ 'margin-left': '10px' }"
@@ -198,6 +205,10 @@ const loadDataList = async () => {
   }
   tableData.value = result.data;
 };
+
+//控制刷新Icon动画效果是否开启
+const isRotating = ref(false);
+
 // onMounted(() => {
 //   loadDataList();
 // });

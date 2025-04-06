@@ -59,7 +59,7 @@ instance.interceptors.response.use(
             return responseData;
         } else if (responseData.code == 901) {
 
-            //登陆超时  直接访问需要登录的页面但是没有登录
+            //直接访问需要登录的页面但是没有登录或者登陆超时  （后端实现：session或者cookie）
             //将用户重定向到登录页面，并且携带当前页面的路径信息，方便用户登录成功后能回到之前访问的页面
             //实现方法：跳转到登录页时，把当前路由的路径作为查询参数传递给登录页
             router.push("/login?redirectUrl=" + encodeURI(router.currentRoute.value.path));
