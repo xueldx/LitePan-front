@@ -390,6 +390,9 @@ const isRotating = ref(false);
 </script>
 
 <style lang="scss" scoped>
+.framework {
+  height: 100%;
+}
 .header {
   box-shadow: 0 3px 10px 0 rgb(0 0 0 / 6%);
   height: 56px;
@@ -461,7 +464,8 @@ const isRotating = ref(false);
           font-size: 28px;
         }
         .text {
-          font-size: 14px; //后来加的，之后再调整
+          margin-top: 5px;
+          font-size: 14px;
         }
       }
       .active {

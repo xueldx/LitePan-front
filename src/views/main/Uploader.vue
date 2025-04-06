@@ -170,8 +170,8 @@ const STATUS = {
 };
 
 // 分片时,每片的大小（5M）
-// const chunkSize = 1024 * 1024 * 5;
-const chunkSize = 1024; //测试用，每片大小为1M
+const chunkSize = 1024 * 1024 * 5;
+// const chunkSize = 1024 * 1024; //测试用，每片大小为1M
 
 // 文件列表
 const fileList = ref([]);
