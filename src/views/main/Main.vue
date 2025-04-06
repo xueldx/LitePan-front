@@ -93,9 +93,9 @@
               <Icon :cover="row.fileCover" :width="32"></Icon>
             </template>
             <template v-else>
-              <!-- 如果文件夹类型是文件,则文件类型是该文件类型 -->
+              <!-- 如果文件类型是具体文件,则文件类型是该文件类型 -->
               <Icon v-if="row.folderType == 0" :fileType="row.fileType"></Icon>
-              <!-- 如果文件夹类型是目录,则文件类型就是目录0 -->
+              <!-- 如果文件类型是目录,则文件类型就是目录0 -->
               <Icon v-if="row.folderType == 1" :fileType="0"></Icon>
             </template>
 
@@ -576,7 +576,7 @@ const preview = (data) => {
     return;
   }
   if (data.status != 2) {
-    proxy.Message.warning("文件正在转码中，无法预览");
+    proxy.Message.warning("文件正在转码中，无法预览，请刷新重试");
     return;
   }
   previewRef.value.showPreview(data, 0);

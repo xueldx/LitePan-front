@@ -67,7 +67,7 @@
                 title="上传"
                 @click="startUpload(item.uid)"
               ></Icon>
-              <!--TODO暂停和续传功能-->
+
               <Icon
                 :width="28"
                 class="btn-item"
@@ -171,7 +171,7 @@ const STATUS = {
 
 // 分片时,每片的大小（5M）
 // const chunkSize = 1024 * 1024 * 5;
-const chunkSize = 1024 * 1024; //测试用，每片大小为1M
+const chunkSize = 1024; //测试用，每片大小为1M
 
 // 文件列表
 const fileList = ref([]);
@@ -247,7 +247,7 @@ const computeMD5 = (fileItem) => {
   // 使用 FileReader 读取文件的数据
   let fileReader = new FileReader();
   // 已删除文件的索引
-  const delList = ref([]);
+  // const delList = ref([]);
 
   // 加载文件的下一个数据块。
   let loadNext = () => {
@@ -333,10 +333,12 @@ const uploadFile = async (uid, chunkIndex) => {
     if (delIndex != -1) {
       //在删除列表找到了该文件的id，说明该文件被删除了，跳出循环取消上传
       delList.value.splice(delIndex, 1);
+      proxy.Message.error("已取消上传");
       break;
     }
     currentFile = getFileByUid(uid);
     if (currentFile.pause) {
+      proxy.Message.error("已暂停上传");
       break;
     }
     //开始上传操作(分片上传)
@@ -364,7 +366,7 @@ const uploadFile = async (uid, chunkIndex) => {
       },
       //显示进度
       uploadProgressCallback: (event) => {
-        //当前分片已经被后端接收（成功上传）的部分
+        //当前分片已经被浏览器成功上传的部分
         let loaded = event.loaded;
         if (loaded > fileSize) {
           loaded = fileSize;
@@ -381,6 +383,7 @@ const uploadFile = async (uid, chunkIndex) => {
     }
     currentFile.fileId = uploadResult.data.fileId;
     currentFile.status = STATUS[uploadResult.data.status].value;
+    //已成功上传的分片下标号
     currentFile.chunkIndex = i;
     if (
       uploadResult.data.status == STATUS.upload_seconds.value ||
@@ -392,6 +395,25 @@ const uploadFile = async (uid, chunkIndex) => {
       break;
     }
   } //for循环结束
+};
+//暂停上传
+const pauseUpload = (uid) => {
+  let fileItemPused = getFileByUid(uid);
+  fileItemPused.pause = true;
+};
+
+//继续上传
+const startUpload = (uid) => {
+  let fileItemReUpload = getFileByUid(uid);
+  fileItemReUpload.pause = false;
+  proxy.Message.success("已继续上传");
+  uploadFile(uid, fileItemReUpload.chunkIndex + 1);
+};
+
+//删除上传记录
+const delUpload = (uid, index) => {
+  delList.value.push(uid);
+  fileList.value.splice(index, 1);
 };
 </script>
 

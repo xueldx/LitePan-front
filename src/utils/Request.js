@@ -100,6 +100,10 @@ const request = (config) => {
         'X-Requested-With': 'XMLHttpRequest'
     }
     return instance.post(url, formData, {
+        /*
+        浏览器触发事件：当使用 FormData 上传文件时，浏览器会自动计算上传进度且会定期触发 progress 事件，包含loaded: 已上传的字节数
+        axios（基于XHR）执行事件回调：当配置了 onUploadProgress 时，axios 会监听上传进度事件，每次进度更新时，会调用我们传入的回调函数
+        */
         onUploadProgress: (event) => {
             if (config.uploadProgressCallback) {
                 config.uploadProgressCallback(event);
