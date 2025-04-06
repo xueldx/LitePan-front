@@ -66,7 +66,7 @@
               'menu-item',
               item.menuCode == currentMenu.menuCode ? 'active' : '',
             ]"
-            v-for="item in menus"
+            v-for="item in filteredMenus"
             :key="item.menuCode"
           >
             <div :class="['iconfont', 'icon-' + item.icon]"></div>
@@ -144,6 +144,7 @@
 </template> 
 
 <script setup>
+import { isAdmin } from "@/config/admin";
 import UpdateAvatar from "./UpdateAvatar.vue";
 import UpdatePassword from "./UpdatePassword.vue";
 import Uploader from "@/views/main/Uploader.vue";
@@ -154,6 +155,7 @@ import {
   nextTick,
   onMounted,
   watch,
+  computed,
 } from "vue";
 const { proxy } = getCurrentInstance();
 import { useRouter, useRoute } from "vue-router";
@@ -289,6 +291,15 @@ const menus = [
   },
 ];
 
+// 计算属性：过滤后的菜单（只有超级管理员们能看到设置菜单）
+
+const filteredMenus = computed(() => {
+  return menus.filter(
+    (menu) =>
+      menu.allShow ||
+      (menu.menuCode === "settings" && isAdmin(userInfo.value.userId))
+  );
+});
 // 菜单栏选项跳转
 const jump = (data) => {
   if (!data.path || data.menuCode == currentMenu.value.menuCode) {

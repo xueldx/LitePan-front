@@ -30,3 +30,5 @@ coverage
 *.tsbuildinfo
 # Spec Story
 .specstory/
+
+.env
