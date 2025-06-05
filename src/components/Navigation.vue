@@ -189,11 +189,11 @@ const backParent = () => {
     font-weight: bold;
   }
   .link {
-    color: #06a7ff;
+    color: #0e5bff;
     cursor: pointer;
   }
   .icon-right {
-    color: #06a7ff;
+    color: #0e5bff;
     padding: 0px 5px;
     font-size: 13px;
   }

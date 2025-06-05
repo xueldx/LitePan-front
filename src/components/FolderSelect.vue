@@ -137,7 +137,7 @@ const navChange = (data) => {
   text-align: center;
   line-height: 200px;
   span {
-    color: #06a7ff;
+    color: #0e5bff;
   }
 }
 </style>

@@ -15,18 +15,20 @@
             :http-request="addFile"
             :accept="fileAccept"
           >
-            <el-button type="primary">
+            <el-button
+              :style="{ 'background-color': '#0e5bff', color: '#fff' }"
+            >
               <span class="iconfont icon-upload"></span>
               上传
             </el-button>
           </el-upload>
         </div>
-        <el-button type="success" @click="newFolder">
+        <el-button type="default" @click="newFolder">
           <span class="iconfont icon-folder-add"></span>
           新建文件夹
         </el-button>
         <el-button
-          type="danger"
+          type="default"
           :disabled="selectFileIdList.length == 0"
           @click="delFileBatch"
         >
@@ -34,7 +36,7 @@
           批量删除
         </el-button>
         <el-button
-          type="warning"
+          type="default"
           :disabled="selectFileIdList.length == 0"
           @click="moveFolderBatch"
         >

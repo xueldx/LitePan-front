@@ -113,4 +113,12 @@ body {
     .iconfont::before {
         margin-right: 5px;
     }
+
+
+
+    &:hover {
+        background-color: #fff;
+        color: #0e5bff;
+        border: 1px solid #0e5bff;
+    }
 }

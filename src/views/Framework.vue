@@ -2,7 +2,8 @@
   <div class="framework">
     <div class="header">
       <div class="logo">
-        <div class="iconfont icon-pan"></div>
+        <!-- <div class="iconfont icon-pan"></div> -->
+        <div><Icon iconName="LitePan"></Icon></div>
         <div class="name">LitePan</div>
       </div>
       <div class="right-panel">
@@ -413,8 +414,8 @@ const isRotating = ref(false);
     .name {
       font-weight: bold;
       margin-left: 5px;
-      font-size: 25px;
-      color: #05a1f5;
+      font-size: 20px;
+      color: #0e5bff;
     }
   }
   .right-panel {
@@ -434,7 +435,7 @@ const isRotating = ref(false);
       }
       // 昵称
       .nick-name {
-        color: #05a1f5;
+        color: #0e5bff;
       }
     }
   }
@@ -469,10 +470,10 @@ const isRotating = ref(false);
       }
       .active {
         .iconfont {
-          color: #06a7ff;
+          color: #0e5bff;
         }
         .text {
-          color: #06a7ff;
+          color: #0e5bff;
         }
       }
     }
@@ -502,12 +503,13 @@ const isRotating = ref(false);
         }
       }
       .active {
-        background: #eef9fe;
+        background: #f3f3f3;
+        // background: #eef9fe;
         .iconfont {
-          color: #05a1f5;
+          color: #0e5bff;
         }
         .text {
-          color: #05a1f5;
+          color: #0e5bff;
         }
       }
 
@@ -536,7 +538,7 @@ const isRotating = ref(false);
           .iconfont {
             cursor: pointer;
             margin-right: 20px;
-            color: #05a1f5;
+            color: #0e5bff;
             transition: transform 0.5s ease;
           }
           @keyframes rotateAnimation {
