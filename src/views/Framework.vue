@@ -3,7 +3,7 @@
     <div class="header">
       <div class="logo">
         <div class="iconfont icon-pan"></div>
-        <div class="name">Easy云盘</div>
+        <div class="name">LitePan</div>
       </div>
       <div class="right-panel">
         <el-popover
@@ -144,7 +144,6 @@
 </template> 
 
 <script setup>
-import { isAdmin } from "@/config/admin";
 import UpdateAvatar from "./UpdateAvatar.vue";
 import UpdatePassword from "./UpdatePassword.vue";
 import Uploader from "@/views/main/Uploader.vue";
@@ -297,7 +296,7 @@ const filteredMenus = computed(() => {
   return menus.filter(
     (menu) =>
       menu.allShow ||
-      (menu.menuCode === "settings" && isAdmin(userInfo.value.userId))
+      (menu.menuCode === "settings" && Boolean(userInfo.value.admin))
   );
 });
 // 菜单栏选项跳转

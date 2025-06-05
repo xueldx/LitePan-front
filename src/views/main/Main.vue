@@ -323,40 +323,6 @@ const search = () => {
 //控制刷新Icon动画效果是否开启
 const isRotating = ref(false);
 
-//TODO(页面布局-悬浮+弹窗):全局搜索文件，可搜任意目录下的文件而不是只在当前目录搜索
-// const search = async () => {
-//   let params = {
-//     // 页码
-//     pageNo: tableData.value.pageNo,
-//     // 分页大小
-//     pageSize: tableData.value.pageSize,
-//     // 文件名（模糊）
-//     fileNameFuzzy: fileNameFuzzy.value,
-//   };
-
-//   let result = await proxy.Request({
-//     url: api.loadDataList,
-//     showLoading: true,
-//     params,
-//   });
-//   if (!result) {
-//     return;
-//   }
-//   tableData.value = result.data;
-//   //
-//   // navigationRef.value.setCurrentFolder(-1);
-//   // editing.value = false;
-// };
-
-//刷新，根据搜索框中是否有值执行两种不同的操作
-// const refresh = () => {
-//   if (fileNameFuzzy.value.length > 0) {
-//     search();
-//   } else {
-//     loadDataList();
-//   }
-// };
-
 // 当鼠标放在当前行时,分享下载等图标出现
 const showOp = (row) => {
   // 关闭所有的显示
