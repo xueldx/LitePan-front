@@ -4,7 +4,7 @@
       <div class="logo">
         <!-- <div class="iconfont icon-pan"></div> -->
         <div><Icon iconName="LitePan"></Icon></div>
-        <div class="name">LitePan</div>
+        <div class="name">优享云盘</div>
       </div>
       <div class="right-panel">
         <el-popover

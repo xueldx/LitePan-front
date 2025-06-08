@@ -103,8 +103,6 @@ const setPath = () => {
 };
 
 const getNavigationFolder = async (path) => {
-  console.log("test");
-
   let url = api.getFolderInfo;
   if (props.shareId) url = api.getFolderInfo4Share;
   if (props.adminShow) url = api.getFolderInfo4Admin;
