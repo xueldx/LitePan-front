@@ -51,7 +51,7 @@ instance.interceptors.response.use(
 
 
         // 非json格式数据响应成功也要返回
-        //判断等于符号一定要看清楚，不要写成赋值了！！！
+
         if (responseType == "arraybuffer" || responseType == "blob") {
             return responseData;
         }
